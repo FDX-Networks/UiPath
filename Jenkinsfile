@@ -2,20 +2,19 @@ pipeline {
 	    agent any
 	
 
-	        // Environment Variables
-	        environment {
-	        MAJOR = '1'
-	        MINOR = '0'
-	        //Orchestrator Services
-	        UIPATH_ORCH_URL = "https://cloud.uipath.com/"
-	        UIPATH_ORCH_LOGICAL_NAME = "fdxwzcjrkz"
-	        UIPATH_ORCH_TENANT_NAME = "DefalutTenant"
-	        UIPATH_ORCH_FOLDER_NAME = "newFolder"
+		// Environment Variables
+		environment {
+			MAJOR = '1'
+			MINOR = '0'
+			//Orchestrator Services
+			UIPATH_ORCH_URL = "https://cloud.uipath.com/"
+			UIPATH_ORCH_LOGICAL_NAME = "fdxwzcjrkz"
+			UIPATH_ORCH_TENANT_NAME = "DefalutTenant"
+			UIPATH_ORCH_FOLDER_NAME = "newFolder"
 	    }
 	
 
-	    stages {
-	
+	    stages {	
 
 	        // Printing Basic Information
 	        stage('Preparing'){
@@ -26,11 +25,8 @@ pipeline {
 	                echo "Jenkins JOB Name ${env.JOB_NAME}"
 	                echo "GitHub BranhName ${env.BRANCH_NAME}"
 	                checkout scm
-	
-
 	            }
-	        }
-	
+	        }	
 
 	         // Build Stages
 	        stage('Build') {
@@ -42,9 +38,10 @@ pipeline {
 	                      version: [$class: 'ManualVersionEntry', version: "${MAJOR}.${MINOR}.${env.BUILD_NUMBER}"],
 	                      useOrchestrator: false,
 						  traceLevel: 'None'
-	        )
+					)
 	            }
 	        }
+			
 	         // Test Stages
 	        stage('Test') {
 	            steps {
@@ -69,43 +66,35 @@ pipeline {
 						entryPointPaths: 'Main.xaml'
 					)
 	            }
-	        }
-	
-
-	
+	        }	
 
 	         // Deploy to Production Step
 	        stage('Deploy to Production') {
 	            steps {
 	                echo 'Deploy to Production'
-	                }
 	            }
-	    }
-	
-
-	    // Options
-	    options {
-	        // Timeout for pipeline
-	        timeout(time:80, unit:'MINUTES')
-	        skipDefaultCheckout()
-	    }
-	
-
-	
-
-	    // 
-	    post {
-	        success {
-	            echo 'Deployment has been completed!'
 	        }
-	        failure {
-	          echo "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.JOB_DISPLAY_URL})"
-	        }
-	        always {
-	            /* Clean workspace if success */
-	            cleanWs()
-	        }
-	    }
-	
+		}	
+
+		// Options
+		options {
+			// Timeout for pipeline
+			timeout(time:80, unit:'MINUTES')
+			skipDefaultCheckout()
+		}	
+
+		// 
+		post {
+			success {
+				echo 'Deployment has been completed!'
+			}
+			failure {
+			  echo "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.JOB_DISPLAY_URL})"
+			}
+			always {
+				/* Clean workspace if success */
+				cleanWs()
+			}
+		}	
 
 	}
