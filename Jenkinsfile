@@ -1,5 +1,5 @@
 pipeline {
-	    agent any
+	    agent { label 'UiPath' }
 	
 
 		// Environment Variables
@@ -82,7 +82,7 @@ pipeline {
 			// Timeout for pipeline
 			timeout(time:80, unit:'MINUTES')
 			skipDefaultCheckout()
-		}	
+		}
 
 		// 
 		post {
