@@ -11,6 +11,7 @@ pipeline {
 			UIPATH_ORCH_LOGICAL_NAME = "fdxwzcjrkz"
 			UIPATH_ORCH_TENANT_NAME = "DefaultTenant"
 			UIPATH_ORCH_FOLDER_NAME = "newFolder"
+			UIPATH_APIKEY = "KNnRaxQsLMSySKfFB7JnZ8Cj92V7jV_N48ZrLkOEqC_mm"
 	    }
 	
 
@@ -60,7 +61,7 @@ pipeline {
 						folderName: "${UIPATH_ORCH_FOLDER_NAME}",
 						environments: 'DEV',
 						//credentials: [$class: 'UserPassAuthenticationEntry', credentialsId: 'APIUserKey']
-						credentials: Token(accountName: "${UIPATH_ORCH_LOGICAL_NAME}", credentialsId: 'APIUserKey'), 
+						credentials: Token(accountName: "${UIPATH_ORCH_LOGICAL_NAME}", credentialsId: "${UIPATH_APIKEY}" ), 
 						traceLevel: 'Verbose',
 						entryPointPaths: 'Main.xaml',
 						createProcess: true
