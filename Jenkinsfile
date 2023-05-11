@@ -1,6 +1,6 @@
 pipeline {
-	    agent { label 'UiPath' }
-	    //agent any
+	    //agent { label 'UiPath' }
+	    agent any
 
 		// Environment Variables
 		environment {
@@ -26,6 +26,11 @@ pipeline {
 	                echo "Jenkins JOB Name ${env.JOB_NAME}"
 	                echo "GitHub BranhName ${env.BRANCH_NAME}"
 	                checkout scm
+					UiPathInstallPlatform (
+						cliNupkgPath: '', 
+						cliVersion: 'X_22.10.8418.30339', 
+						traceLevel: 'Verbose'
+					)
 	            }
 	        }	
 
