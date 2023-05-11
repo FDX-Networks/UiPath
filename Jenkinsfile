@@ -61,7 +61,7 @@ pipeline {
 						folderName: "${UIPATH_ORCH_FOLDER_NAME}",
 						environments: 'DEV',
 						//credentials: [$class: 'UserPassAuthenticationEntry', credentialsId: 'APIUserKey']
-						credentials: Token(accountName: "${UIPATH_ORCH_LOGICAL_NAME}", credentialsId: 'KNnRaxQsLMSySKfFB7JnZ8Cj92V7jV_N48ZrLkOEqC_mm' ), 
+						credentials: Token(accountName: "${UIPATH_ORCH_LOGICAL_NAME}", credentialsId: 'pA-tPImomHhKiv2fJ0FWqTb24K17ZhZyeV0tQEyz3GItb' ), 
 						traceLevel: 'Verbose',
 						entryPointPaths: 'Main.xaml',
 						createProcess: true
