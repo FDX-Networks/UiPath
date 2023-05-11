@@ -1,6 +1,6 @@
 pipeline {
-	    //agent { label 'UiPath' }
-	    agent any
+	    agent { label 'UiPath' }
+	    //agent any
 
 		// Environment Variables
 		environment {
@@ -54,7 +54,6 @@ pipeline {
 	        stage('Deploy to UAT') {
 	            steps {
 	                echo "Deploying ${BRANCH_NAME} to UAT "
-					echo "APIUserKey : 'APIUserKey' "
 	                UiPathDeploy (
 						packagePath: "Output\\${env.BUILD_NUMBER}",
 						orchestratorAddress: "${UIPATH_ORCH_URL}",
