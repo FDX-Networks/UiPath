@@ -95,6 +95,7 @@ pipeline {
 			always {
 				/* Clean workspace if success */
 				//cleanWs()
+				echo 'TEST completed!'
 			}
 		}	
 
