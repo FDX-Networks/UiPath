@@ -26,7 +26,7 @@ pipeline {
 	                echo "Jenkins JOB Name ${env.JOB_NAME}"
 	                echo "GitHub BranhName ${env.BRANCH_NAME}"
 	                checkout scm
-					UiPathInstallPlatform cliNupkgPath: '', forceInstall: true, traceLevel: 'None'
+					UiPathInstallPlatform forceInstall: true, traceLevel: 'None'
 	            }
 	        }	
 
