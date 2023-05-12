@@ -73,7 +73,7 @@ pipeline {
 						folderName: '${UIPATH_ORCH_FOLDER_NAME}',
 						orchestratorAddress: '${UIPATH_ORCH_URL}',
 						orchestratorTenant: '${UIPATH_ORCH_TENANT_NAME}',
-						traceLoggingLevel: 'None'
+						traceLevel: 'None'
 					)
 	            }
 	        }	
