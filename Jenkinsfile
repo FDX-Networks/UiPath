@@ -1,6 +1,6 @@
 pipeline {
-	    //agent { label 'UiPath' }
-	    agent any
+	    agent { label 'UiPath' }
+	    //agent any
 
 		// Environment Variables
 		environment {
@@ -26,12 +26,12 @@ pipeline {
 	                echo "Jenkins JOB Name ${env.JOB_NAME}"
 	                echo "GitHub BranhName ${env.BRANCH_NAME}"
 	                checkout scm
-					UiPathInstallPlatform (
-						cliNupkgPath: '', 
-						//cliVersion: 'X_22.10.8418.30339', 
-						cliVersion: 'WIN_22.10.8438.32859',
-						traceLevel: 'Verbose'
-					)
+					//UiPathInstallPlatform (
+					//	cliNupkgPath: '', 
+					//	//cliVersion: 'X_22.10.8418.30339', 
+					//	cliVersion: 'WIN_22.10.8438.32859',
+					//	traceLevel: 'Verbose'
+					//)
 	            }
 	        }	
 
@@ -72,9 +72,17 @@ pipeline {
 						entryPointPaths: 'Main.xaml',
 						createProcess: true
 					)
+					UiPathAssets(
+						assetsAction: DeployAssets(),
+						credentials: UserPass('KNnRaxQsLMSySKfFB7JnZ8Cj92V7jV_N48ZrLkOEqC_mm'),
+						filePath: '${WORKSPACE}/assets.csv',
+						folderName: '${UIPATH_ORCH_FOLDER_NAME}',
+						orchestratorAddress: '${UIPATH_ORCH_URL}',
+						orchestratorTenant: '${UIPATH_ORCH_TENANT_NAME}',
+						traceLoggingLevel: 'None'
+					)
 	            }
-	        }
-	
+	        }	
 
 	         // Deploy to Production Step
 	        stage('Deploy to Production') {
