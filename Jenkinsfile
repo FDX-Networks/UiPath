@@ -67,15 +67,15 @@ pipeline {
 						entryPointPaths: 'Main.xaml',
 						createProcess: true
 					)
-					UiPathAssets(
-						assetsAction: DeployAssets(),
-						credentials: UserPass('KNnRaxQsLMSySKfFB7JnZ8Cj92V7jV_N48ZrLkOEqC_mm'),
-						filePath: '${WORKSPACE}/assets.csv',
-						folderName: '${UIPATH_ORCH_FOLDER_NAME}',
-						orchestratorAddress: '${UIPATH_ORCH_URL}',
-						orchestratorTenant: '${UIPATH_ORCH_TENANT_NAME}',
-						traceLevel: 'None'
-					)
+					//UiPathAssets(
+					//	assetsAction: DeployAssets(),
+					//	credentials: UserPass('KNnRaxQsLMSySKfFB7JnZ8Cj92V7jV_N48ZrLkOEqC_mm'),
+					//	filePath: '${WORKSPACE}/assets.csv',
+					//	folderName: '${UIPATH_ORCH_FOLDER_NAME}',
+					//	orchestratorAddress: '${UIPATH_ORCH_URL}',
+					//	orchestratorTenant: '${UIPATH_ORCH_TENANT_NAME}',
+					//	traceLevel: 'None'
+					//)
 	            }
 	        }	
 
